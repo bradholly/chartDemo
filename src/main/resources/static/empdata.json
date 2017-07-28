@@ -1,0 +1,36 @@
+{
+	"data": [
+		{
+			"warehouse": "02W",
+			"dollars": "$2,965,235.24",
+			"dozens": "69,023.17",
+			"picktickets": "41",
+			"purchase-orders": "29",
+			"cartons": "21,713"
+		},
+		{
+			"warehouse": "08W",
+			"dollars": "$1,208,914.74",
+			"dozens": "45,046.17",
+			"picktickets": "54",
+			"purchase-orders": "54",
+			"cartons": "15,359"
+		},
+		{
+			"warehouse": "19W",
+			"dollars": "$2,833,701.76",
+			"dozens": "102,227.67",
+			"picktickets": "62",
+			"purchase-orders": "62",
+			"cartons": "29,202"
+		},
+		{
+			"warehouse": "20W",
+			"dollars": "$1,955,497.28",
+			"dozens": "60,962.33",
+			"picktickets": "85",
+			"purchase-orders": "84",
+			"cartons": "27,836"
+		}
+	]
+}

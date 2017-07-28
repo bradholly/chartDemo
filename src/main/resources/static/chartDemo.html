@@ -1,0 +1,456 @@
+<html>
+<head>
+<title>Ajax Test</title>
+
+<script src="Chart.bundle.js"></script>
+<script src="jquery-3.2.1.min.js"></script>
+<script src="utils.js"></script>
+
+</head>
+<body>
+
+	<!-- monthly FG data  -->
+	<div style="width: 100%;">
+		<canvas id="monthly-fg-data-chart"></canvas>
+	</div>
+
+
+	<!-- working ajax call  -->
+	<!--
+	<div id="ajax1"></div>
+	
+	<script>
+		$(document).ready(function() {
+			$.ajax({
+				url : "/StudentJsonDataServlet",
+				async : true,
+				success : function(result) {
+					$("#ajax1").html(result);
+				}
+			});
+		});
+	</script> 
+	-->
+
+
+	<!-- javascript - monthly FG data  -->
+	<script>
+        var config = {
+            type: 'line',
+            data: {
+                labels: ["1-Jan", "8-Jan", "15-Jan", "22-Jan", "29-Jan", "5-Feb", "12-Feb", "19-Feb", "26-Feb", "4-Mar", "11-Mar", "18-Mar", "25-Mar", "1-Apr", "8-Apr", "15-Apr", "22-Apr", "29-Apr", "6-May", "13-May", "20-May", "27-May", "3-Jun", "10-Jun", "17-Jun", "24-Jun", "1-Jul", "8-Jul", "15-Jul", "22-Jul", "29-Jul", "5-Aug", "12-Aug", "19-Aug", "26-Aug", "2-Sep", "9-Sep", "16-Sep", "23-Sep", "30-Sep", "7-Oct", "14-Oct", "21-Oct", "28-Oct", "4-Nov", "11-Nov", "18-Nov", "25-Nov", "2-Dec", "9-Dec", "16-Dec", "23-Dec", "30-Dec"],
+                datasets: [{
+                    label: "CY2017",
+                    backgroundColor: window.chartColors.black,
+                    borderColor: window.chartColors.black,
+                    data: [
+                    	3131.7,
+                    	3210.0,
+                    	3450.6,
+                    	3539.9,
+                    	3548.8,
+                    	3311.9,
+                    	3309.6,
+                    	3263.5,
+                    	3132.3,
+                    	3302.3,
+                    	2932.7,
+                    	2860.9,
+                    	2438.3,
+                    	2445.8,
+                    	2429.6,
+                    	2136.8,
+                    	2141.9,
+                    	2013.3,
+                    	1861.9,
+                    	1785.4,
+                    	1840.4,
+                    	1941.5,
+                    	2118.3,
+                    	2417.8,
+                    	2786.1,
+                    	3076.7,
+                    	3387.4,
+                    	3488.7,
+                    	2985.9
+                    ],
+                    fill: false,
+                }, {
+                    label: "CY2016",
+                    fill: false,
+                    backgroundColor: window.chartColors.red,
+                    borderColor: window.chartColors.red,
+                    data: [
+                    	2887.9,
+                    	2909.2,
+                    	2825.6,
+                    	2778.2,
+                    	2949.8,
+                    	2942.7,
+                    	2701,
+                    	2889.8,
+                    	2741.3,
+                    	2708.4,
+                    	2590.2,
+                    	2288.0,
+                    	2142.4,
+                    	2303.9,
+                    	2262.9,
+                    	1780.4,
+                    	1695.6,
+                    	1866.7,
+                    	1835.8,
+                    	2033.7,
+                    	2111.2,
+                    	2343.2,
+                    	2572.6,
+                    	2946.1,
+                    	3285.4,
+                    	3352.2,
+                    	3061.6,
+                    	3071.5,
+                    	3024.8,
+                    	3214.7,
+                    	3201.9,
+                    	2876.2,
+                    	2753.8,
+                    	2743.4,
+                    	2590.8,
+                    	2428.0,
+                    	2391.2,
+                    	2066.0,
+                    	1728.3,
+                    	1471.6,
+                    	1515.4,
+                    	1569.1,
+                    	1401.3,
+                    	1630.7,
+                    	1890.8,
+                    	2312.2,
+                    	2797.1,
+                    	2962.4,
+                    	3502.2,
+                    	3987.8,
+                    	3969.6,
+                    	3309.9,
+                    	3131.7
+                    ],
+                }, {
+                    label: "CY2015",
+                    fill: false,
+                    backgroundColor: window.chartColors.blue,
+                    borderColor: window.chartColors.blue,
+                    data: [
+                    	1815.5,
+                    	1615.1,
+                    	1656.7,
+                    	1900.2,
+                    	1817.0,
+                    	1717.3,
+                    	1642.3,
+                    	1789.1,
+                    	1679.9,
+                    	1657.2,
+                    	1287.8,
+                    	1285.6,
+                    	1132.9,
+                    	1128.1,
+                    	999.2,
+                    	746.9,
+                    	759.3,
+                    	759.2,
+                    	1005.8,
+                    	1214.3,
+                    	1518.1,
+                    	1666.0,
+                    	1881.3,
+                    	2235.2,
+                    	2314.6,
+                    	2411.8,
+                    	2307.4,
+                    	2252.3,
+                    	2408.6,
+                    	2500.9,
+                    	2368.5,
+                    	2392.6,
+                    	2270.6,
+                    	2223.2,
+                    	2140.0,
+                    	1932.5,
+                    	2013.1,
+                    	1900.2,
+                    	1882.0,
+                    	1496.9,
+                    	1604.7,
+                    	1821.6,
+                    	2026.6,
+                    	2187.3,
+                    	2392.6,
+                    	2576.4,
+                    	2875.1,
+                    	3014.2,
+                    	2878.0,
+                    	2713.3,
+                    	2858.2,
+                    	2887.9,
+                    	2909.2
+                    ],
+                }, {
+                    label: "2016 Intransit",
+                    fill: false,
+                    backgroundColor: window.chartColors.orange,
+                    borderColor: window.chartColors.orange,
+                    data: [
+                    	1106.9,
+                    	1048,
+                    	1415.6,
+                    	1613.9,
+                    	1595.2,
+                    	1634.8,
+                    	1649.3,
+                    	1547.7,
+                    	1458.1,
+                    	1343.0,
+                    	1214.4,
+                    	1119.9,
+                    	911.2,
+                    	746.8,
+                    	959.4,
+                    	1044.9,
+                    	1164.7,
+                    	1115.8,
+                    	1397.9,
+                    	1273.6,
+                    	1233.1,
+                    	1244.0,
+                    	1257.1,
+                    	1182.9,
+                    	1111.3,
+                    	1133.6,
+                    	1093.2,
+                    	1168.2,
+                    	1078.9,
+                    	1045.1,
+                    	987.7,
+                    	907.5,
+                    	889.3,
+                    	1061.5,
+                    	1129.1,
+                    	1034.1,
+                    	969.3,
+                    	871.9,
+                    	852.4,
+                    	1012.8,
+                    	1071.2,
+                    	1224.7,
+                    	1555.1,
+                    	1489.4,
+                    	1673.9,
+                    	1678.9,
+                    	1635.0,
+                    	1745.9,
+                    	1669.7
+                    ],
+                }, {
+                    label: "2017 Intransit",
+                    fill: false,
+                    backgroundColor: window.chartColors.purple,
+                    borderColor: window.chartColors.purple,
+                    data: [
+                    	1337.5,
+                    	1378.3,
+                    	1269.8,
+                    	1566.7,
+                    	1585.3,
+                    	1474.4,
+                    	1295,
+                    	1331.3,
+                    	1328.8,
+                    	1264.2,
+                    	1252.2,
+                    	1118.9,
+                    	947.6,
+                    	1068.2,
+                    	1001.8,
+                    	1105.2,
+                    	1088.2,
+                    	1062.7,
+                    	1168.4,
+                    	1310.0,
+                    	1411.0,
+                    	1328.3,
+                    	1435.3,
+                    	1390.0,
+                    	1347.2,
+                    	1327.3,
+                    	1210.3,
+                    	1336.7,
+                    	1328.4
+                    ],
+                }, {
+                    label: "Insured Inventory",
+                    fill: false,
+                    backgroundColor: window.chartColors.green,
+                    borderColor: window.chartColors.green,
+                    pointRadius: 0,
+                    data: [
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0,
+                    	3400.0
+                    ],
+                }]
+            },
+            options: {
+                responsive: true,
+                title:{
+                    display:true,
+                    text:'Monthly FG data'
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                legend: {
+                	position: 'right'
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Date'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Dozens x 1,000'
+                        }
+                    }]
+                }
+            }
+        };
+
+        window.onload = function() {
+            var ctx = document.getElementById("monthly-fg-data-chart").getContext("2d");
+            window.myLine = new Chart(ctx, config);
+        };
+
+//         document.getElementById('randomizeData').addEventListener('click', function() {
+//             config.data.datasets.forEach(function(dataset) {
+//                 dataset.data = dataset.data.map(function() {
+//                     return randomScalingFactor();
+//                 });
+
+//             });
+
+//             window.myLine.update();
+//         });
+
+//         var colorNames = Object.keys(window.chartColors);
+//         document.getElementById('addDataset').addEventListener('click', function() {
+//             var colorName = colorNames[config.data.datasets.length % colorNames.length];
+//             var newColor = window.chartColors[colorName];
+//             var newDataset = {
+//                 label: 'Dataset ' + config.data.datasets.length,
+//                 backgroundColor: newColor,
+//                 borderColor: newColor,
+//                 data: [],
+//                 fill: false
+//             };
+
+//             for (var index = 0; index < config.data.labels.length; ++index) {
+//                 newDataset.data.push(randomScalingFactor());
+//             }
+
+//             config.data.datasets.push(newDataset);
+//             window.myLine.update();
+//         });
+
+//         document.getElementById('addData').addEventListener('click', function() {
+//             if (config.data.datasets.length > 0) {
+//                 var month = MONTHS[config.data.labels.length % MONTHS.length];
+//                 config.data.labels.push(month);
+
+//                 config.data.datasets.forEach(function(dataset) {
+//                     dataset.data.push(randomScalingFactor());
+//                 });
+
+//                 window.myLine.update();
+//             }
+//         });
+
+//         document.getElementById('removeDataset').addEventListener('click', function() {
+//             config.data.datasets.splice(0, 1);
+//             window.myLine.update();
+//         });
+
+//         document.getElementById('removeData').addEventListener('click', function() {
+//             config.data.labels.splice(-1, 1); // remove the label first
+
+//             config.data.datasets.forEach(function(dataset, datasetIndex) {
+//                 dataset.data.pop();
+//             });
+
+//             window.myLine.update();
+//         });
+    </script>
+
+</body>
+
+</html>
