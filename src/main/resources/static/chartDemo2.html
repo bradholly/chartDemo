@@ -29,10 +29,9 @@
 		</div>
 
 		<br>&nbsp
-		
+
 		<h3>Shipping Summary</h3>
-		Date Period
-		<select id="shipping-summary-select">
+		Date Period <select id="shipping-summary-select">
 			<option value="today">Today</option>
 			<option value="yesterday">Yesterday</option>
 			<option value="curr-month">Current Month</option>
@@ -42,8 +41,8 @@
 			<option value="curr-year">Current Year</option>
 			<option value="last-year">Last Year</option>
 		</select>
-		
-		<table id="empTable" class="display">
+
+		<table id="shippingSummaryTable" class="display">
 			<thead>
 				<tr>
 					<th>Warehouse</th>
@@ -55,14 +54,16 @@
 				</tr>
 			</thead>
 		</table>
-		
+
+		<br>&nbsp
+		<br>&nbsp		
 		<br>&nbsp
 		
-				<!-- open receipts  -->
-		<div class="chart-container">
-			<canvas id="open-receipts"></canvas>
+		<div id="ajax1">
+			<h3>Test text</h3>
 		</div>
-		
+
+
 	</div>
 
 
@@ -280,7 +281,7 @@
 					}
 				});
 
-		    $('#empTable').dataTable({
+		    $('#shippingSummaryTable').dataTable({
 		        "ajax": "empdata.json",
 		        "columnDefs": [
 		            {"className": "dt-center", "targets": "_all"}
@@ -294,6 +295,24 @@
 		            {"data": "cartons"}
 		        ]
 		    });   
+		    
+		    var json = $.getJSON("http://localhost:8081/leadTimes", 
+		    		function(response, status, jqXHR){
+		    			console.log(jqXHR.responseText);
+		    			$("#ajax1").html(jqXHR.responseText);
+		    		}
+		    );
+		    
+// 			$.ajax({
+// 				url : "http://localhost:8081/leadTimes",
+// 				async: "true", 
+// 				success : function(result) {
+// 					$("#ajax1").html("HELLO MOFFOCKA");
+// 					console.log(result);
+// 					console.log("completed ajax call");
+// 				}
+// 			});
+			
 		});
 
 		//         document.getElementById('randomizeData').addEventListener('click', function() {
